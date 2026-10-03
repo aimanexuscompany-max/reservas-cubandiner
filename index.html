@@ -103,6 +103,7 @@ textarea{min-height:84px;resize:vertical}
 .resumen b{font-size:17px}
 .done p{margin-top:14px;font-size:15px}
 .done .small{font-size:13px;opacity:.85;margin-top:10px}
+.done .small a{color:var(--verde);font-weight:800;white-space:nowrap}
 .stack{display:grid;gap:10px;margin-top:20px}
 footer{color:var(--crema);text-align:center;padding:24px 20px 34px;font-size:12.5px;line-height:1.6;opacity:.92}
 footer a{color:var(--amarillo);font-weight:700;text-decoration:none}
@@ -132,7 +133,7 @@ form.cerrada .si-abierta{display:none!important}
 <main id="reservar">
   <div class="tabs" id="tabs" hidden>
     <button type="button" data-modo="mesa" aria-pressed="true">A TABLE</button>
-    <button type="button" data-modo="salsa" aria-pressed="false">SALSA NIGHT · OCT 17</button>
+    <button type="button" data-modo="salsa" aria-pressed="false">SALSA NIGHT 💃</button>
   </div>
 
   <section id="paso">
@@ -202,7 +203,7 @@ form.cerrada .si-abierta{display:none!important}
     <div class="script" id="dScript">see you soon</div>
     <div class="resumen" id="dResumen"></div>
     <p>Your confirmation is on its way to <b id="dCorreo"></b>.<span id="dLleno"> If that time is already full, the email will let you know.</span></p>
-    <p class="small">No email in 10 minutes? Check your spam folder or call us at <a href="tel:+17705092576" style="color:var(--verde);font-weight:800;white-space:nowrap">(770) 509-2576</a>.</p>
+    <p class="small" id="dNoLlega"></p>
     <p class="small" id="dCambio"></p>
     <div class="stack">
       <a class="btn btn-main" href="https://thecubandiner.com/menu" target="_blank" rel="noopener">SEE THE MENU</a>
@@ -304,14 +305,16 @@ form.cerrada .si-abierta{display:none!important}
   function fallar(msg) { err.innerHTML = msg; err.classList.add('show'); err.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
 
   function listo(d) {
-    $('paso').hidden = true; $('tabs').hidden = true;
+    $('paso').hidden = true; $('tabs').hidden = true; $('banner').hidden = true;
     $('dResumen').innerHTML = modo === 'salsa'
       ? '<b>Salsa Night · Saturday, October 17</b><br>Arrival ' + esc(d.hora) + ' · Party of ' + esc(d.grupo)
       : '<b>' + esc(fechaLarga(d.fecha)) + '</b><br>' + esc(d.hora) + ' · Party of ' + esc(d.grupo);
     $('dCorreo').textContent = String(d.email).trim();
     $('dScript').textContent = modo === 'salsa' ? 'see you on the dance floor' : 'see you soon';
-    $('dLleno').textContent = modo === 'salsa' ? ' Online spots are limited: if they’re gone, the email will let you know.'
-      : ' If that time is already full, the email will let you know.';
+    $('dLleno').textContent = modo === 'salsa' ? '' : ' If that time is already full, the email will let you know.';
+    $('dNoLlega').innerHTML = modo === 'salsa'
+      ? 'No email in 10 minutes? Check your spam folder. If it’s not there, the online spots may be gone: call us at ' + TEL + '.'
+      : 'No email in 10 minutes? Check your spam folder or call us at ' + TEL + '.';
     $('dCambio').textContent = modo === 'salsa' ? 'Need to change it? Reserve again with the same email.'
       : 'Need to change it? Reserve again with the same email and date.';
     $('done').hidden = false;
@@ -325,7 +328,7 @@ form.cerrada .si-abierta{display:none!important}
   });
   $('banner').addEventListener('click', function (e) { e.preventDefault(); cambiarModo('salsa', true); });
   $('otra').addEventListener('click', function () {
-    $('done').hidden = true; $('paso').hidden = false; $('tabs').hidden = !salsa.visible;
+    $('done').hidden = true; $('paso').hidden = false; $('tabs').hidden = !salsa.visible; $('banner').hidden = !salsa.visible;
     form.querySelectorAll('input[name="hora"],input[name="llegada"]').forEach(function (r) { r.checked = false; });
     pintarDias(); cambiarModo(modo, true);
   });
