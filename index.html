@@ -3,35 +3,387 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reserve a table · Cuban Diner</title>
-<meta name="robots" content="noindex">
+<title>Reserve a table · Cuban Diner · Marietta, GA</title>
+<meta name="description" content="Reserve your table at Cuban Diner: real Cuban food in Marietta, GA (East Cobb). Pick your day and time and get your confirmation by email.">
+<link rel="canonical" href="https://reserve.thecubandiner.com/">
+<meta property="og:title" content="Reserve a table · Cuban Diner">
+<meta property="og:description" content="Real Cuban food in Marietta, GA. Pick your day and time and get your confirmation by email.">
+<meta property="og:image" content="https://reserve.thecubandiner.com/assets/og-image.jpg">
+<meta property="og:url" content="https://reserve.thecubandiner.com/">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#13302E">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Yellowtail&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--verde:#13302E;--crema:#EEECE8;--naranja:#EA6232;--amarillo:#FDC413}
+:root{--verde:#13302E;--crema:#EEECE8;--naranja:#EA6232;--amarillo:#FDC413;--linea:#d9d5cc}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Montserrat',Arial,sans-serif;background:var(--verde);color:var(--crema);text-align:center;padding:40px 20px;-webkit-font-smoothing:antialiased}
-.wrap{max-width:460px;margin:0 auto}
-.logo{width:170px;display:block;margin:0 auto 22px}
-h1{font-family:'Anton',Impact,sans-serif;font-weight:400;text-transform:uppercase;font-size:44px;line-height:1}
-p{margin-top:12px;font-weight:600}
-.btn{display:block;margin-top:16px;text-decoration:none;font-weight:800;letter-spacing:.06em;border-radius:50px;padding:17px 20px}
-.a{background:var(--naranja);color:var(--crema);margin-top:28px}
-.b{background:var(--amarillo);color:var(--verde)}
-small{display:block;margin-top:26px;opacity:.85}
-small a{color:var(--amarillo);font-weight:800;text-decoration:none}
+[hidden]{display:none!important}
+html{background:var(--verde)}
+body{font-family:'Montserrat',Arial,sans-serif;color:var(--verde);background:var(--verde);-webkit-font-smoothing:antialiased;line-height:1.45}
+.anton{font-family:'Anton',Impact,sans-serif;text-transform:uppercase;letter-spacing:.01em;font-weight:400}
+.script{font-family:'Yellowtail',cursive;font-weight:400}
+.wrap{max-width:560px;margin:0 auto;overflow-x:hidden}
+header{padding:28px 20px 0;text-align:center;color:var(--crema)}
+header .logo{width:160px;display:block;margin:0 auto 18px}
+.pill{display:inline-block;background:var(--amarillo);color:var(--verde);font-weight:800;letter-spacing:.2em;font-size:12.5px;padding:7px 16px;border-radius:40px}
+h1{margin-top:14px;font-size:40px;line-height:1;color:var(--crema)}
+h1 span{display:block;color:var(--naranja);font-size:62px;line-height:.98;margin-top:2px}
+.when{margin-top:12px;font-weight:700;font-size:16px}
+.icons{display:flex;justify-content:center;gap:26px;margin:16px 0 4px}
+.icons img{height:40px}
+.hero{margin:16px 16px 0;border-radius:18px;height:200px;background:url(assets/hero.jpg) center/cover}
+.salsa{display:block;margin:14px 16px 0;border-radius:18px;background:var(--naranja);color:var(--crema);text-decoration:none;padding:16px 18px 18px;position:relative;overflow:hidden}
+.salsa .pill{background:var(--verde);color:var(--amarillo)}
+.salsa h3{font-size:30px;line-height:1.02;margin-top:10px}
+.salsa p{font-weight:700;font-size:14px;margin-top:6px;max-width:78%}
+.salsa .cta{display:inline-block;margin-top:12px;background:var(--amarillo);color:var(--verde);font-weight:800;font-size:13px;letter-spacing:.06em;padding:10px 16px;border-radius:40px}
+.salsa img{position:absolute;right:-6px;bottom:-4px;height:96px;opacity:.95}
+.strip{height:34px;margin-top:24px;background:url(assets/baldosa-color.jpg) center/auto 68px repeat-x}
+main{background:var(--crema);padding:24px 20px 34px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#fff;border-radius:50px;padding:5px;margin-bottom:22px}
+.tabs button{border:0;border-radius:50px;padding:12px 6px;font:800 13px 'Montserrat',Arial,sans-serif;letter-spacing:.05em;background:transparent;color:var(--verde);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--verde);color:var(--crema)}
+.tabs button:focus-visible{outline:3px solid var(--amarillo);outline-offset:2px}
+main h2{font-size:36px;line-height:1.02}
+.sub{margin-top:6px;font-size:14.5px}
+form{margin-top:20px}
+.field{margin-bottom:22px}
+.l{display:block;font-weight:800;font-size:15px;margin-bottom:8px}
+.req{color:var(--naranja)}
+.opt{font-weight:600;opacity:.7}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;font:500 17px 'Montserrat',Arial,sans-serif;color:var(--verde);background:#fff;border:2px solid var(--linea);border-radius:12px;padding:13px 14px;outline:none}
+input:focus,textarea:focus{border-color:var(--verde)}
+textarea{min-height:84px;resize:vertical}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid.cinco{grid-template-columns:repeat(5,1fr)}
+@media (min-width:480px){.grid{grid-template-columns:repeat(4,1fr)}}
+.grid label{text-align:center;border:2px solid var(--verde);border-radius:40px;padding:11px 2px;font-weight:700;font-size:15px;background:#fff;cursor:pointer;user-select:none;white-space:nowrap}
+.chips input:checked+label{background:var(--verde);color:var(--crema)}
+.chips input:focus-visible+label{outline:3px solid var(--amarillo);outline-offset:2px}
+.dias{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;margin:0 -20px;padding:10px 20px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.dias::-webkit-scrollbar{display:none}
+.dias label{flex:none;scroll-snap-align:start;width:62px;text-align:center;border:2px solid var(--linea);border-radius:14px;background:#fff;padding:7px 0 6px;cursor:pointer;position:relative;user-select:none}
+.dias label small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;opacity:.7}
+.dias label b{display:block;font-family:'Anton',Impact,sans-serif;font-size:26px;line-height:1.15;font-weight:400}
+.dias input:checked+label{background:var(--verde);border-color:var(--verde);color:var(--crema)}
+.dias input:checked+label small{opacity:.85}
+.dias label i{position:absolute;top:-9px;right:-5px;font-style:normal;font-size:16px;line-height:1}
+.hint{font-size:13px;line-height:1.45;margin-top:10px}
+.hint a,.box a{color:var(--verde);font-weight:800;white-space:nowrap}
+.box{background:#fff;border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14px}
+.box b{display:block;font-size:15px}
+.box.oscura{background:var(--verde);color:var(--crema)}
+.box.oscura a{color:var(--amarillo)}
+.box .btn{margin-top:12px;padding:13px 16px;font-size:14px}
+.evento{background:var(--verde);color:var(--crema);border-radius:16px;padding:16px 18px;margin-bottom:22px}
+.evento h3{font-size:30px;line-height:1.02;margin-top:10px;color:var(--crema)}
+.evento p{font-size:14.5px;margin-top:6px}
+.evento .mini{font-size:12.5px;opacity:.8;margin-top:8px}
+.sep{display:flex;align-items:center;gap:10px;font-weight:800;font-size:13px;letter-spacing:.14em;margin:6px 0 16px}
+.sep:after{content:'';flex:1;height:2px;background:var(--linea)}
+.check{display:flex;gap:12px;align-items:flex-start;margin-bottom:16px;font-size:14px;line-height:1.4;cursor:pointer}
+.check input{flex:none;width:22px;height:22px;margin-top:1px;accent-color:var(--verde)}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;cursor:pointer;font:800 17px 'Montserrat',Arial,sans-serif;letter-spacing:.06em;border-radius:50px;padding:17px 20px}
+.btn-main{background:var(--naranja);color:var(--crema)}
+.btn-main:disabled{opacity:.6;cursor:wait}
+.btn-dark{background:var(--verde);color:var(--crema)}
+.btn-amarillo{background:var(--amarillo);color:var(--verde)}
+.btn-line{background:transparent;color:var(--verde);border:2px solid var(--verde)}
+.note{font-size:12.5px;opacity:.8;margin-top:12px;text-align:center}
+.err{display:none;background:#fff3ee;border:2px solid var(--naranja);border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:18px}
+.err.show{display:block}
+.err a{color:var(--verde);font-weight:800}
+.done{text-align:center}
+.done h2{font-size:50px;color:var(--naranja);margin-top:4px}
+.done .script{font-size:34px;color:var(--verde);margin-top:2px}
+.resumen{background:#fff;border-radius:16px;padding:16px;margin-top:18px;font-size:16px;line-height:1.5}
+.resumen b{font-size:17px}
+.done p{margin-top:14px;font-size:15px}
+.done .small{font-size:13px;opacity:.85;margin-top:10px}
+.stack{display:grid;gap:10px;margin-top:20px}
+footer{color:var(--crema);text-align:center;padding:24px 20px 34px;font-size:12.5px;line-height:1.6;opacity:.92}
+footer a{color:var(--amarillo);font-weight:700;text-decoration:none}
+footer .logo{width:110px;display:block;margin:0 auto 12px}
+body[data-modo="mesa"] [data-solo="salsa"],body[data-modo="salsa"] [data-solo="mesa"]{display:none!important}
+form.cerrada .si-abierta{display:none!important}
 </style>
 </head>
-<body>
+<body data-modo="mesa">
 <div class="wrap">
+<header>
   <img class="logo" src="assets/cuban-diner-logo-crema.png" alt="Cuban Diner">
-  <h1>Reserve a table</h1>
-  <p>1484 Roswell Rd, Marietta, GA</p>
-  <a class="btn a" href="https://forms.gle/5Uurt7YtQeqe5u5W6">RESERVE A TABLE</a>
-  <a class="btn b" href="https://forms.gle/uBb3cU6tdfDdL5tp6">SALSA NIGHT · SAT, OCT 17</a>
-  <small>Parties of more than 10: call <a href="tel:+17705092576">(770) 509-2576</a></small>
+  <span class="pill">RESERVATIONS</span>
+  <h1 class="anton">Reserve <span>your table</span></h1>
+  <div class="when">Real Cuban food · Marietta, GA</div>
+  <div class="icons" aria-hidden="true"><img src="assets/icono-mojito-amarillo.png" alt=""><img src="assets/icono-hibisco-amarillo.png" alt=""><img src="assets/icono-palmera-amarillo.png" alt=""></div>
+</header>
+<div class="hero" role="img" aria-label="A table full of Cuban dishes at Cuban Diner"></div>
+<a class="salsa" id="banner" href="?event=salsa" hidden>
+  <span class="pill">SALSA NIGHT</span>
+  <h3 class="anton">Saturday, October 17</h3>
+  <p>Live music by Son Sensación from 7 PM · Free entry</p>
+  <span class="cta">RESERVE FOR SALSA NIGHT →</span>
+  <img src="assets/icono-hibisco-amarillo.png" alt="" aria-hidden="true">
+</a>
+<div class="strip" aria-hidden="true"></div>
+
+<main id="reservar">
+  <div class="tabs" id="tabs" hidden>
+    <button type="button" data-modo="mesa" aria-pressed="true">A TABLE</button>
+    <button type="button" data-modo="salsa" aria-pressed="false">SALSA NIGHT · OCT 17</button>
+  </div>
+
+  <section id="paso">
+    <div data-solo="mesa">
+      <h2 class="anton">Reserve a table</h2>
+      <p class="sub">Pick your party, day and time. We'll email your confirmation right away.</p>
+    </div>
+    <div data-solo="salsa">
+      <div class="evento">
+        <span class="pill">SALSA NIGHT</span>
+        <h3 class="anton">Saturday, October 17</h3>
+        <p>Live music by <b>Son Sensación</b> from 7 PM · Free entry · Come hungry and ready to dance.</p>
+        <p class="mini">Online spots are limited. Online reservations close Oct 17 at 5 PM.</p>
+      </div>
+    </div>
+
+    <noscript><div class="box"><b>Please turn on JavaScript to reserve here.</b>Or use our <a href="https://forms.gle/5Uurt7YtQeqe5u5W6">reservation form</a>, or call <a href="tel:+17705092576">(770) 509-2576</a>.</div></noscript>
+
+    <form id="f" novalidate>
+      <div class="err" id="err" role="alert"></div>
+
+      <div class="box oscura" id="salsaCerrada" data-solo="salsa" hidden>
+        <b>Online reservations for Salsa Night are closed.</b>
+        Walk-ins are welcome, or call us at <a href="tel:+17705092576">(770) 509-2576</a>. See you on the dance floor!
+      </div>
+
+      <div class="field si-abierta" role="radiogroup" aria-labelledby="lGrupo">
+        <span class="l" id="lGrupo">How many people? <span class="req">*</span></span>
+        <div class="chips grid cinco" id="grupos"></div>
+        <p class="hint">More than 10? Call us at <a href="tel:+17705092576">(770) 509-2576</a>.</p>
+      </div>
+
+      <div class="field" data-solo="mesa" role="radiogroup" aria-labelledby="lDia">
+        <span class="l" id="lDia">Pick a day <span class="req">*</span></span>
+        <div class="chips dias" id="dias"></div>
+        <div class="box" id="sinDias" hidden><b>Online reservations aren't available right now.</b>Please call us at <a href="tel:+17705092576">(770) 509-2576</a>.</div>
+      </div>
+
+      <div class="field" data-solo="mesa" role="radiogroup" aria-labelledby="lHora">
+        <span class="l" id="lHora">Pick a time <span class="req">*</span></span>
+        <div class="chips grid" id="horas"></div>
+        <div class="box oscura" id="especial" hidden></div>
+        <p class="hint">Need a table within the next 2 hours? Walk in or call us at <a href="tel:+17705092576">(770) 509-2576</a>.</p>
+      </div>
+
+      <div class="field si-abierta" data-solo="salsa" role="radiogroup" aria-labelledby="lLlegada">
+        <span class="l" id="lLlegada">Arrival time <span class="req">*</span></span>
+        <div class="chips grid" id="llegadas"></div>
+        <p class="hint">The music starts at 7 PM. We'll hold your table for 15 minutes.</p>
+      </div>
+
+      <div class="si-abierta">
+        <div class="sep">YOUR DETAILS</div>
+        <div class="field"><label class="l" for="name">Full name <span class="req">*</span></label><input id="name" type="text" autocomplete="name" maxlength="80" required></div>
+        <div class="field"><label class="l" for="phone">Mobile phone <span class="req">*</span></label><input id="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="(770) 555-0123" required></div>
+        <div class="field"><label class="l" for="email">Email <span class="req">*</span></label><input id="email" type="email" autocomplete="email" inputmode="email" required><p class="hint">We'll send your confirmation here.</p></div>
+        <div class="field"><label class="l" for="notes">Anything we should know? <span class="opt">(optional)</span></label><textarea id="notes" maxlength="300" placeholder="Birthday, high chair, accessibility…"></textarea></div>
+        <label class="check"><input type="checkbox" id="optin"><span>Yes, send me Cuban Diner news and offers by email or text. I can unsubscribe anytime. <span class="opt">(optional)</span></span></label>
+        <button class="btn btn-main" id="go" type="submit">RESERVE MY TABLE</button>
+        <p class="note" id="nota">Free to reserve. Need to change it later? Just reserve again with the same email and date.</p>
+      </div>
+    </form>
+  </section>
+
+  <section class="done" id="done" aria-live="polite" hidden>
+    <h2 class="anton">Request sent!</h2>
+    <div class="script" id="dScript">see you soon</div>
+    <div class="resumen" id="dResumen"></div>
+    <p>Your confirmation is on its way to <b id="dCorreo"></b>.<span id="dLleno"> If that time is already full, the email will let you know.</span></p>
+    <p class="small">No email in 10 minutes? Check your spam folder or call us at <a href="tel:+17705092576" style="color:var(--verde);font-weight:800;white-space:nowrap">(770) 509-2576</a>.</p>
+    <p class="small" id="dCambio"></p>
+    <div class="stack">
+      <a class="btn btn-main" href="https://thecubandiner.com/menu" target="_blank" rel="noopener">SEE THE MENU</a>
+      <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Cuban+Diner+1484+Roswell+Rd+Marietta+GA+30062" target="_blank" rel="noopener">GET DIRECTIONS</a>
+      <button class="btn btn-line" type="button" id="otra">MAKE ANOTHER RESERVATION</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <img class="logo" src="assets/cuban-diner-logo-crema.png" alt="Cuban Diner">
+  <div><b>The Real Cuban.</b> · 1484 Roswell Rd, Marietta, GA 30062</div>
+  <div>Open daily from 11 AM · Sun–Thu until 9 PM · Fri–Sat until 10 PM</div>
+  <div><a href="tel:+17705092576">(770) 509-2576</a> · <a href="https://thecubandiner.com" target="_blank" rel="noopener">thecubandiner.com</a> · <a href="https://www.instagram.com/thecubandiner/" target="_blank" rel="noopener">@thecubandiner</a></div>
+  <div style="margin-top:8px;opacity:.75">Trouble with this page? <a id="respaldo" href="https://forms.gle/5Uurt7YtQeqe5u5W6" target="_blank" rel="noopener">Reserve here instead</a></div>
+</footer>
 </div>
+
+<script src="assets/reglas.js"></script>
+<script>
+(function () {
+  var R = window.Reglas;
+  var $ = function (id) { return document.getElementById(id); };
+  var DIAS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+  var DIAS_L = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MESES = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+  var MESES_L = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var TEL = '<a href="tel:+17705092576">(770) 509-2576</a>';
+  var form = $('f'), err = $('err');
+
+  // ?ahora=2026-10-17T20:00:00Z solo para revisar la página en otra fecha (el script valida con su propia hora)
+  var p = new URLSearchParams(location.search), t0 = Date.now(), forzado = Date.parse(p.get('ahora') || '');
+  function ahora() { return isNaN(forzado) ? Date.now() : forzado + (Date.now() - t0); }
+
+  var modo = 'mesa', lista = [], salsa = R.salsa(ahora()), pintado = 0;
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function elegido(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
+  function chip(n, id, valor, texto, marcado, clase) {
+    return '<input type="radio" name="' + n + '" id="' + id + '" value="' + esc(valor) + '"' + (marcado ? ' checked' : '') + '>' +
+      '<label for="' + id + '"' + (clase ? ' class="' + clase + '"' : '') + '>' + texto + '</label>';
+  }
+  function fechaLarga(f) { var x = f.split('-'); return DIAS_L[R.diaSemana(f)] + ', ' + MESES_L[+x[1] - 1] + ' ' + (+x[2]); }
+
+  function pintarGrupos() {
+    var html = '';
+    for (var i = 1; i <= R.GENERAL.maxGrupo; i++) html += chip('grupo', 'g' + i, String(i), String(i));
+    $('grupos').innerHTML = html;
+  }
+  function pintarDias() {
+    var t = ahora(), previo = elegido('dia'), hoy = R.hoy(t), html = '';
+    lista = R.dias(t); salsa = R.salsa(t); pintado = Date.now();
+    var sigue = lista.some(function (d) { return d.fecha === previo; });
+    lista.forEach(function (d, i) {
+      var x = d.fecha.split('-'), marcado = sigue ? d.fecha === previo : i === 0;
+      html += chip('dia', 'd' + d.fecha, d.fecha, '<small>' + (d.fecha === hoy ? 'TODAY' : DIAS[d.dow]) + '</small><b>' + (+x[2]) +
+        '</b><small>' + MESES[+x[1] - 1] + '</small>' + (d.especial && salsa.visible ? '<i aria-label="Salsa Night">💃</i>' : ''), marcado);
+    });
+    $('dias').innerHTML = html;
+    $('sinDias').hidden = lista.length > 0;
+    pintarHoras();
+  }
+  function pintarHoras() {
+    var f = elegido('dia'), previo = elegido('hora'), html = '';
+    var d = lista.filter(function (x) { return x.fecha === f; })[0];
+    (d ? d.horas : []).forEach(function (h) { html += chip('hora', 'h' + h.replace(/\W/g, ''), h, h, h === previo); });
+    $('horas').innerHTML = html;
+    var esp = $('especial');
+    if (d && d.especial && salsa.visible) {
+      esp.innerHTML = salsa.abierta
+        ? '<b>From 5 PM it’s Salsa Night 💃</b>Live music by Son Sensación and free entry. Evening tables that night are booked separately.' +
+          '<button type="button" class="btn btn-amarillo" data-modo="salsa">RESERVE FOR SALSA NIGHT</button>'
+        : '<b>From 5 PM it’s Salsa Night 💃</b>Online reservations are closed. Walk-ins are welcome, or call us at ' + TEL + '.';
+      esp.hidden = false;
+    } else esp.hidden = true;
+  }
+  function pintarSalsa() {
+    var previo = elegido('llegada'), html = '';
+    R.SALSA.horas.forEach(function (h) { html += chip('llegada', 'l' + h.replace(/\W/g, ''), h, h, h === previo); });
+    $('llegadas').innerHTML = html;
+  }
+  function cambiarModo(m, bajar) {
+    salsa = R.salsa(ahora());
+    if (m === 'salsa' && !salsa.visible) m = 'mesa';
+    modo = m;
+    document.body.setAttribute('data-modo', m);
+    document.querySelectorAll('#tabs button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-modo') === m)); });
+    var cerrada = m === 'salsa' && !salsa.abierta;
+    form.classList.toggle('cerrada', cerrada);
+    $('salsaCerrada').hidden = !cerrada;
+    $('go').textContent = m === 'salsa' ? 'RESERVE FOR SALSA NIGHT' : 'RESERVE MY TABLE';
+    $('nota').textContent = m === 'salsa' ? 'Free to reserve. Need to change it later? Just reserve again with the same email.'
+      : 'Free to reserve. Need to change it later? Just reserve again with the same email and date.';
+    $('respaldo').href = (m === 'salsa' ? R.SALSA : R.GENERAL).respaldo;
+    err.classList.remove('show');
+    if (bajar) $('reservar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  function fallar(msg) { err.innerHTML = msg; err.classList.add('show'); err.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+
+  function listo(d) {
+    $('paso').hidden = true; $('tabs').hidden = true;
+    $('dResumen').innerHTML = modo === 'salsa'
+      ? '<b>Salsa Night · Saturday, October 17</b><br>Arrival ' + esc(d.hora) + ' · Party of ' + esc(d.grupo)
+      : '<b>' + esc(fechaLarga(d.fecha)) + '</b><br>' + esc(d.hora) + ' · Party of ' + esc(d.grupo);
+    $('dCorreo').textContent = String(d.email).trim();
+    $('dScript').textContent = modo === 'salsa' ? 'see you on the dance floor' : 'see you soon';
+    $('dLleno').textContent = modo === 'salsa' ? ' Online spots are limited: if they’re gone, the email will let you know.'
+      : ' If that time is already full, the email will let you know.';
+    $('dCambio').textContent = modo === 'salsa' ? 'Need to change it? Reserve again with the same email.'
+      : 'Need to change it? Reserve again with the same email and date.';
+    $('done').hidden = false;
+    $('done').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  form.addEventListener('change', function (e) { if (e.target.name === 'dia') pintarHoras(); });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-modo]');
+    if (b && b.tagName === 'BUTTON') { e.preventDefault(); cambiarModo(b.getAttribute('data-modo'), b.closest('#tabs') === null); }
+  });
+  $('banner').addEventListener('click', function (e) { e.preventDefault(); cambiarModo('salsa', true); });
+  $('otra').addEventListener('click', function () {
+    $('done').hidden = true; $('paso').hidden = false; $('tabs').hidden = !salsa.visible;
+    form.querySelectorAll('input[name="hora"],input[name="llegada"]').forEach(function (r) { r.checked = false; });
+    pintarDias(); cambiarModo(modo, true);
+  });
+  document.addEventListener('visibilitychange', function () {   // si la página quedó abierta un rato, se actualizan las horas
+    if (!document.hidden && Date.now() - pintado > 5 * 60000) { pintarDias(); cambiarModo(modo); }
+  });
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault(); err.classList.remove('show');
+    var d = { nombre: $('name').value, telefono: $('phone').value, email: $('email').value, notas: $('notes').value,
+              ofertas: $('optin').checked, grupo: elegido('grupo') }, cfg;
+    if (modo === 'salsa') {
+      salsa = R.salsa(ahora());
+      if (!salsa.abierta) { cambiarModo('salsa'); return fallar('Online reservations for Salsa Night are closed. Walk-ins are welcome, or call us at ' + TEL + '.'); }
+      if (!R.grupoValido(d.grupo, R.SALSA.maxGrupo)) return fallar('Please choose how many people.');
+      d.hora = elegido('llegada');
+      if (!d.hora) return fallar('Please pick your arrival time.');
+      cfg = R.SALSA;
+    } else {
+      if (!R.grupoValido(d.grupo, R.GENERAL.maxGrupo)) return fallar('Please choose how many people.');
+      d.fecha = elegido('dia'); d.hora = elegido('hora');
+      if (!d.fecha) return fallar('Please pick a day.');
+      if (!d.hora) return fallar('Please pick a time.');
+      var e = R.estado(d.fecha, d.hora, ahora());
+      if (e !== 'ok') {
+        pintarDias();
+        return fallar(e === 'pronto' || e === 'pasado'
+          ? 'That time is now less than 2 hours away, so we can’t take it online. Please pick another time, or call us at ' + TEL + '.'
+          : 'That time isn’t available online. Please pick another one.');
+      }
+      cfg = R.GENERAL;
+    }
+    var problema = R.revisarContacto(d);
+    if (problema) return fallar(problema);
+
+    var cuerpo = new URLSearchParams();
+    (modo === 'salsa' ? R.envioSalsa(d) : R.envioGeneral(d)).forEach(function (x) { cuerpo.append(x[0], x[1]); });
+    var btn = $('go'), texto = btn.textContent;
+    btn.disabled = true; btn.textContent = 'SENDING…';
+    fetch(cfg.form, { method: 'POST', mode: 'no-cors', body: cuerpo })
+      .then(function () { btn.disabled = false; btn.textContent = texto; listo(d); })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = texto;
+        fallar('We couldn’t send your reservation. Please check your connection and try again, or <a href="' + cfg.respaldo + '" target="_blank" rel="noopener">reserve here instead</a>.');
+      });
+  });
+
+  pintarGrupos(); pintarDias(); pintarSalsa();
+  $('banner').hidden = !salsa.visible;
+  $('tabs').hidden = !salsa.visible;
+  var pideSalsa = (p.get('event') || '').toLowerCase() === 'salsa' || /salsa/i.test(location.hash);
+  cambiarModo(pideSalsa ? 'salsa' : 'mesa');
+  if (p.get('preview') === 'done') {   // solo para revisar el diseño de la pantalla final
+    listo(modo === 'salsa' ? { hora: '7:00 PM', grupo: '4', email: 'you@example.com' }
+      : { fecha: lista.length ? lista[0].fecha : R.hoy(ahora()), hora: '7:00 PM', grupo: '4', email: 'you@example.com' });
+  }
+})();
+</script>
 </body>
 </html>
