@@ -38,9 +38,8 @@ h1 span{display:block;color:var(--naranja);font-size:62px;line-height:.98;margin
 .salsa{display:block;margin:14px 16px 0;border-radius:18px;background:var(--naranja);color:var(--crema);text-decoration:none;padding:16px 18px 18px;position:relative;overflow:hidden}
 .salsa .pill{background:var(--verde);color:var(--amarillo)}
 .salsa h3{font-size:30px;line-height:1.02;margin-top:10px}
-.salsa p{font-weight:700;font-size:14px;margin-top:6px;max-width:78%}
+.salsa p{font-weight:700;font-size:14px;margin-top:6px}
 .salsa .cta{display:inline-block;margin-top:12px;background:var(--amarillo);color:var(--verde);font-weight:800;font-size:13px;letter-spacing:.06em;padding:10px 16px;border-radius:40px}
-.salsa img{position:absolute;right:-6px;bottom:-4px;height:96px;opacity:.95}
 .strip{height:34px;margin-top:24px;background:url(assets/baldosa-color.jpg) center/auto 68px repeat-x}
 main{background:var(--crema);padding:24px 20px 34px}
 .tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#fff;border-radius:50px;padding:5px;margin-bottom:22px}
@@ -64,7 +63,7 @@ textarea{min-height:84px;resize:vertical}
 .grid label{text-align:center;border:2px solid var(--verde);border-radius:40px;padding:11px 2px;font-weight:700;font-size:15px;background:#fff;cursor:pointer;user-select:none;white-space:nowrap}
 .chips input:checked+label{background:var(--verde);color:var(--crema)}
 .chips input:focus-visible+label{outline:3px solid var(--amarillo);outline-offset:2px}
-.dias{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;margin:0 -20px;padding:10px 20px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.dias{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding:0 20px;margin:0 -20px;padding:10px 20px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .dias::-webkit-scrollbar{display:none}
 .dias label{flex:none;scroll-snap-align:start;width:62px;text-align:center;border:2px solid var(--linea);border-radius:14px;background:#fff;padding:7px 0 6px;cursor:pointer;position:relative;user-select:none}
 .dias label small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;opacity:.7}
@@ -127,7 +126,6 @@ form.cerrada .si-abierta{display:none!important}
   <h3 class="anton">Saturday, October 17</h3>
   <p>Live music by Son Sensación from 7 PM · Free entry</p>
   <span class="cta">RESERVE FOR SALSA NIGHT →</span>
-  <img src="assets/icono-hibisco-amarillo.png" alt="" aria-hidden="true">
 </a>
 <div class="strip" aria-hidden="true"></div>
 
@@ -216,8 +214,9 @@ form.cerrada .si-abierta{display:none!important}
 
 <footer>
   <img class="logo" src="assets/cuban-diner-logo-crema.png" alt="Cuban Diner">
-  <div><b>The Real Cuban.</b> · 1484 Roswell Rd, Marietta, GA 30062</div>
-  <div>Open daily from 11 AM · Sun–Thu until 9 PM · Fri–Sat until 10 PM</div>
+  <div><b>The Real Cuban.</b></div>
+  <div>1484 Roswell Rd, Marietta, GA 30062</div>
+  <div>Sun–Thu 11 AM–9 PM · Fri–Sat 11 AM–10 PM</div>
   <div><a href="tel:+17705092576">(770) 509-2576</a> · <a href="https://thecubandiner.com" target="_blank" rel="noopener">thecubandiner.com</a> · <a href="https://www.instagram.com/thecubandiner/" target="_blank" rel="noopener">@thecubandiner</a></div>
   <div style="margin-top:8px;opacity:.75">Trouble with this page? <a id="respaldo" href="https://forms.gle/5Uurt7YtQeqe5u5W6" target="_blank" rel="noopener">Reserve here instead</a></div>
 </footer>
