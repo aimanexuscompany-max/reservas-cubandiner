@@ -63,14 +63,21 @@ textarea{min-height:84px;resize:vertical}
 .grid label{text-align:center;border:2px solid var(--verde);border-radius:40px;padding:11px 2px;font-weight:700;font-size:15px;background:#fff;cursor:pointer;user-select:none;white-space:nowrap}
 .chips input:checked+label{background:var(--verde);color:var(--crema)}
 .chips input:focus-visible+label{outline:3px solid var(--amarillo);outline-offset:2px}
-.dias{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding:0 20px;margin:0 -20px;padding:10px 20px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.dias::-webkit-scrollbar{display:none}
-.dias label{flex:none;scroll-snap-align:start;width:62px;text-align:center;border:2px solid var(--linea);border-radius:14px;background:#fff;padding:7px 0 6px;cursor:pointer;position:relative;user-select:none}
-.dias label small{display:block;font-size:10.5px;font-weight:800;letter-spacing:.08em;opacity:.7}
-.dias label b{display:block;font-family:'Anton',Impact,sans-serif;font-size:26px;line-height:1.15;font-weight:400}
-.dias input:checked+label{background:var(--verde);border-color:var(--verde);color:var(--crema)}
-.dias input:checked+label small{opacity:.85}
-.dias label i{position:absolute;top:-9px;right:-5px;font-style:normal;font-size:16px;line-height:1}
+.l-fila{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:8px}
+.l-fila .l{margin-bottom:0}
+.rango{font-size:12.5px;font-weight:700;opacity:.7;white-space:nowrap}
+.cal-sem,.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal-sem{margin-bottom:6px}
+.cal-sem span{text-align:center;font-size:10.5px;font-weight:800;letter-spacing:.05em;opacity:.6}
+.cal label,.cal .off{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:52px;border-radius:12px;position:relative;user-select:none;text-align:center}
+.cal label{border:2px solid var(--linea);background:#fff;cursor:pointer}
+.cal label:hover{border-color:var(--verde)}
+.cal small{display:block;font-size:9px;font-weight:800;letter-spacing:.04em;line-height:1;min-height:9px;opacity:.75}
+.cal b{display:block;font-family:'Anton',Impact,sans-serif;font-weight:400;font-size:21px;line-height:1.15}
+.cal .off{opacity:.3}
+.cal input:checked+label{background:var(--verde);border-color:var(--verde);color:var(--crema)}
+.cal label i{position:absolute;top:-8px;right:-6px;font-style:normal;font-size:15px;line-height:1}
+@media (min-width:480px){.cal-sem,.cal{gap:8px}.cal label,.cal .off{min-height:58px}.cal b{font-size:24px}.cal small{font-size:10px}}
 .hint{font-size:13px;line-height:1.45;margin-top:10px}
 .hint a,.box a{color:var(--verde);font-weight:800;white-space:nowrap}
 .box{background:#fff;border-radius:14px;padding:14px 16px;margin-top:12px;font-size:14px}
@@ -108,12 +115,27 @@ textarea{min-height:84px;resize:vertical}
 footer{color:var(--crema);text-align:center;padding:24px 20px 34px;font-size:12.5px;line-height:1.6;opacity:.92}
 footer a{color:var(--amarillo);font-weight:700;text-decoration:none}
 footer .logo{width:110px;display:block;margin:0 auto 12px}
+@media (min-width:1024px){
+  .wrap{max-width:1180px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,540px);column-gap:56px;padding:56px 40px 0;align-items:start;overflow:visible}
+  header{padding:8px 0 0;text-align:left}
+  header .logo{width:180px;margin:0 0 26px}
+  h1{font-size:clamp(44px,4.2vw,60px)}
+  h1 span{font-size:clamp(70px,7vw,100px)}
+  .when{font-size:18px}
+  .icons{justify-content:flex-start;margin-top:22px}
+  .hero{margin:26px 0 0;height:320px;border-radius:22px}
+  .salsa{margin:20px 0 0}
+  .strip{display:none}
+  main{border-radius:24px;padding:32px 36px 36px}
+  footer{grid-column:1/-1;margin-top:36px}
+}
 body[data-modo="mesa"] [data-solo="salsa"],body[data-modo="salsa"] [data-solo="mesa"]{display:none!important}
 form.cerrada .si-abierta{display:none!important}
 </style>
 </head>
 <body data-modo="mesa">
 <div class="wrap">
+<div class="lado">
 <header>
   <img class="logo" src="assets/cuban-diner-logo-crema.png" alt="Cuban Diner">
   <span class="pill">RESERVATIONS</span>
@@ -128,11 +150,12 @@ form.cerrada .si-abierta{display:none!important}
   <p>Live music by Son Sensación from 7 PM · Free entry</p>
   <span class="cta">RESERVE FOR SALSA NIGHT →</span>
 </a>
+</div>
 <div class="strip" aria-hidden="true"></div>
 
 <main id="reservar">
   <div class="tabs" id="tabs" hidden>
-    <button type="button" data-modo="mesa" aria-pressed="true">A TABLE</button>
+    <button type="button" data-modo="mesa" aria-pressed="true">ANY DAY</button>
     <button type="button" data-modo="salsa" aria-pressed="false">SALSA NIGHT 💃</button>
   </div>
 
@@ -167,8 +190,9 @@ form.cerrada .si-abierta{display:none!important}
       </div>
 
       <div class="field" data-solo="mesa" role="radiogroup" aria-labelledby="lDia">
-        <span class="l" id="lDia">Pick a day <span class="req">*</span></span>
-        <div class="chips dias" id="dias"></div>
+        <div class="l-fila"><span class="l" id="lDia">Pick a day <span class="req">*</span></span><span class="rango" id="rango"></span></div>
+        <div class="cal-sem" aria-hidden="true"><span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span></div>
+        <div class="chips cal" id="dias"></div>
         <div class="box" id="sinDias" hidden><b>Online reservations aren't available right now.</b>Please call us at <a href="tel:+17705092576">(770) 509-2576</a>.</div>
       </div>
 
@@ -228,7 +252,6 @@ form.cerrada .si-abierta{display:none!important}
 (function () {
   var R = window.Reglas;
   var $ = function (id) { return document.getElementById(id); };
-  var DIAS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
   var DIAS_L = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   var MESES = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
   var MESES_L = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -243,8 +266,9 @@ form.cerrada .si-abierta{display:none!important}
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function elegido(n) { var el = form.querySelector('input[name="' + n + '"]:checked'); return el ? el.value : ''; }
-  function chip(n, id, valor, texto, marcado, clase) {
-    return '<input type="radio" name="' + n + '" id="' + id + '" value="' + esc(valor) + '"' + (marcado ? ' checked' : '') + '>' +
+  function chip(n, id, valor, texto, marcado, clase, etiqueta) {
+    return '<input type="radio" name="' + n + '" id="' + id + '" value="' + esc(valor) + '"' + (marcado ? ' checked' : '') +
+      (etiqueta ? ' aria-label="' + esc(etiqueta) + '"' : '') + '>' +
       '<label for="' + id + '"' + (clase ? ' class="' + clase + '"' : '') + '>' + texto + '</label>';
   }
   function fechaLarga(f) { var x = f.split('-'); return DIAS_L[R.diaSemana(f)] + ', ' + MESES_L[+x[1] - 1] + ' ' + (+x[2]); }
@@ -254,16 +278,24 @@ form.cerrada .si-abierta{display:none!important}
     for (var i = 1; i <= R.GENERAL.maxGrupo; i++) html += chip('grupo', 'g' + i, String(i), String(i));
     $('grupos').innerHTML = html;
   }
-  function pintarDias() {
-    var t = ahora(), previo = elegido('dia'), hoy = R.hoy(t), html = '';
+  function pintarDias() {   // calendario de 7 columnas: hoy … 30 días, sin desplazamiento lateral
+    var t = ahora(), previo = elegido('dia'), hoy = R.hoy(t), html = '', disp = {};
     lista = R.dias(t); salsa = R.salsa(t); pintado = Date.now();
-    var sigue = lista.some(function (d) { return d.fecha === previo; });
-    lista.forEach(function (d, i) {
-      var x = d.fecha.split('-'), marcado = sigue ? d.fecha === previo : i === 0;
-      html += chip('dia', 'd' + d.fecha, d.fecha, '<small>' + (d.fecha === hoy ? 'TODAY' : DIAS[d.dow]) + '</small><b>' + (+x[2]) +
-        '</b><small>' + MESES[+x[1] - 1] + '</small>' + (d.especial && salsa.visible ? '<i aria-label="Salsa Night">💃</i>' : ''), marcado);
-    });
+    lista.forEach(function (d) { disp[d.fecha] = d; });
+    var elegida = disp[previo] ? previo : (lista.length ? lista[0].fecha : '');
+    var fin = R.sumarDias(hoy, R.GENERAL.maxDiasAntes);
+    var desde = R.sumarDias(hoy, -R.diaSemana(hoy)), hasta = R.sumarDias(fin, 6 - R.diaSemana(fin));
+    for (var f = desde; f <= hasta; f = R.sumarDias(f, 1)) {
+      if (f < hoy || f > fin) { html += '<span class="vacio" aria-hidden="true"></span>'; continue; }
+      var x = f.split('-'), dia = +x[2], d = disp[f], esp = d && d.especial && salsa.visible;
+      var dentro = '<small>' + (f === hoy ? 'TODAY' : dia === 1 ? MESES[+x[1] - 1] : '&nbsp;') + '</small><b>' + dia + '</b>' +
+        (esp ? '<i aria-hidden="true">💃</i>' : '');
+      html += d ? chip('dia', 'd' + f, f, dentro, f === elegida, '', fechaLarga(f) + (esp ? ' (Salsa Night)' : ''))
+        : '<span class="off" aria-hidden="true">' + dentro + '</span>';
+    }
     $('dias').innerHTML = html;
+    var a = hoy.split('-'), b = fin.split('-');
+    $('rango').textContent = MESES_L[+a[1] - 1].slice(0, 3) + ' ' + (+a[2]) + ' – ' + MESES_L[+b[1] - 1].slice(0, 3) + ' ' + (+b[2]);
     $('sinDias').hidden = lista.length > 0;
     pintarHoras();
   }
