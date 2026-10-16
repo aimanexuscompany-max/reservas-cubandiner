@@ -30,7 +30,7 @@
     cierre: Date.parse('2026-10-17T21:00:00Z'),   // sáb 17-oct 5:00 PM EDT: el formulario se cierra solo
     fin: Date.parse('2026-10-18T02:00:00Z'),      // 10:00 PM EDT: después la página ya no muestra el evento
     lleno: false,                                  // true si se llenan los 50 (el script cierra el formulario)
-    cancelado: true                                // 15-oct: Osman canceló el evento → la página no lo muestra
+    cancelado: false                               // 15-oct se canceló; 16-oct se reactivó (música 6:30–8:30 PM)
   };
   var OFERTAS = 'Yes, send me Cuban Diner news and offers by email or text. I can unsubscribe anytime.';
   var RE_TEL = /^\+?[0-9() .-]{10,20}$/;                          // la misma del formulario
