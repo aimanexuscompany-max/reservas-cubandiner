@@ -312,6 +312,9 @@ form.cerrada .si-abierta{display:none!important}
           '<button type="button" class="btn btn-amarillo" data-modo="salsa">RESERVE FOR SALSA NIGHT</button>'
         : '<b>From 5 PM it’s Salsa Night 💃</b>Online reservations are closed. Walk-ins are welcome, or call us at ' + TEL + '.';
       esp.hidden = false;
+    } else if (d && d.especial && R.SALSA.cancelado) {   // la noche quedó libre, pero el script la sigue apartando: por teléfono
+      esp.innerHTML = '<b>Tables after 5 PM this day</b>Please call us at ' + TEL + ' and we’ll save you a table.';
+      esp.hidden = false;
     } else esp.hidden = true;
   }
   function pintarSalsa() {

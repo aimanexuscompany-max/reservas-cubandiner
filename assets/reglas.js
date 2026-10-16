@@ -29,7 +29,8 @@
     horas: ['6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
     cierre: Date.parse('2026-10-17T21:00:00Z'),   // sáb 17-oct 5:00 PM EDT: el formulario se cierra solo
     fin: Date.parse('2026-10-18T02:00:00Z'),      // 10:00 PM EDT: después la página ya no muestra el evento
-    lleno: false                                   // true si se llenan los 50 (el script cierra el formulario)
+    lleno: false,                                  // true si se llenan los 50 (el script cierra el formulario)
+    cancelado: true                                // 15-oct: Osman canceló el evento → la página no lo muestra
   };
   var OFERTAS = 'Yes, send me Cuban Diner news and offers by email or text. I can unsubscribe anytime.';
   var RE_TEL = /^\+?[0-9() .-]{10,20}$/;                          // la misma del formulario
@@ -112,7 +113,10 @@
     }
     return out;
   }
-  function salsa(ahora) { return { visible: ahora < SALSA.fin, abierta: ahora < SALSA.cierre && !SALSA.lleno }; }
+  function salsa(ahora) {
+    if (SALSA.cancelado) return { visible: false, abierta: false };
+    return { visible: ahora < SALSA.fin, abierta: ahora < SALSA.cierre && !SALSA.lleno };
+  }
 
   /** '' si está bien; si no, el mensaje para el cliente. */
   function revisarContacto(d) {
